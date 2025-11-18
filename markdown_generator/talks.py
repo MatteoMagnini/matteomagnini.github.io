@@ -88,12 +88,14 @@ for row, item in talks.iterrows():
     
     if len(str(item.location)) > 3:
         md += 'location: "' + str(item.location) + '"\n'
-           
+
+    if len(str(item.slides_url)) > 5:
+        md += "slidesurl: '" + item.slides_url + "'\n"
+
+    if len(str(item.poster_url)) > 5:
+        md += "posterurl: '" + item.poster_url + "'\n"
+
     md += "---\n"
-    
-    
-    if len(str(item.talk_url)) > 3:
-        md += "\n[More information here](" + item.talk_url + ")\n" 
         
     
     if len(str(item.description)) > 3:
