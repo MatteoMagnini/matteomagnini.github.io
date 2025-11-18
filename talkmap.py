@@ -5,8 +5,8 @@
 # with geopy/Nominatim, and uses the getorg library to output data, HTML, and
 # Javascript for a standalone cluster map. This is functionally the same as the
 # #talkmap Jupyter notebook.
-import frontmatter
 import glob
+import yaml
 import getorg
 from geopy import Nominatim
 from geopy.exc import GeocoderTimedOut
@@ -27,8 +27,10 @@ title = ""
 # Perform geolocation
 for file in g:
     # Read the file
-    data = frontmatter.load(file)
-    data = data.to_dict()
+    with open(file, 'r', encoding='utf-8') as f:
+        content = f.read()
+        yaml_content = content.split('---')[1]  # Extract YAML between the delimiters
+        data = yaml.load(yaml_content, Loader=yaml.FullLoader)  # Parse YAML into a dictionary
 
     # Press on if the location is not present
     if 'location' not in data:

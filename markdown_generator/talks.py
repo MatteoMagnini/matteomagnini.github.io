@@ -81,7 +81,7 @@ for row, item in talks.iterrows():
     md += "permalink: /talks/" + html_filename + "\n"
     
     if len(str(item.venue)) > 3:
-        md += 'venue: "' + item.venue + '"\n'
+        md += 'venue: "' + item.venue.replace('"', "'") + '"\n'
         
     if len(str(item.date)) > 3:
         md += "date: " + str(item.date) + "\n"
