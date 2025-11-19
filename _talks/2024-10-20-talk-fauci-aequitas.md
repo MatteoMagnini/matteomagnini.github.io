@@ -2,6 +2,8 @@
 title: "Enforcing Fairness via Constraint Injection with FaUCI"
 collection: talks
 type: "Paper presentation"
+year: 2024
+country: "Spain"
 permalink: /talks/2024-10-20-talk-fauci-aequitas
 venue: "AEQUITAS 2024"
 date: 2024-10-20

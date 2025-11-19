@@ -2,6 +2,8 @@
 title: "Symbolic Knowledge Injection via PSyKI. A tutorial"
 collection: talks
 type: "Tutorial"
+year: 2022
+country: "Spain"
 permalink: /talks/2022-11-16-talk-psyki-tutorial
 venue: "PRIMA 2022"
 date: 2022-11-16

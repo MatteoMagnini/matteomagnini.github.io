@@ -2,6 +2,8 @@
 title: "Dive into Symbolic Knowledge Extraction & Injection: gentle introduction and technologies"
 collection: talks
 type: "Dissemination"
+year: 2022
+country: "Italy"
 permalink: /talks/2022-10-07-talk-kdd-lab
 venue: "KDD Lab reading group"
 date: 2022-10-07

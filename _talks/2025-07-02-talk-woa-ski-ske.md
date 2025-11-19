@@ -2,6 +2,8 @@
 title: "Symbolic Knowledge Extraction and Injection: Theory and Methods"
 collection: talks
 type: "Dissemination"
+year: 2025
+country: "Italy"
 permalink: /talks/2025-07-02-talk-woa-ski-ske
 venue: "WOA 2025"
 date: 2025-07-02
