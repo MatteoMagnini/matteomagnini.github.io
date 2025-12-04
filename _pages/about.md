@@ -9,8 +9,7 @@ redirect_from:
 
 Hello there 👋
 
-I am Matteo Magnini, PhD candidate at the University of Bologna in Computer Science and Engineering (cycle 38).
-Soon I will move to the University of Luxembourg to start a new research position.
+I am Matteo Magnini, I have recently moved in the Grand Duchy and I have started my new position: Research Specialist at the University of Luxembourg ([Department of Computer Science (DCS)](https://www.uni.lu/fstm-en/research-departments/department-of-computer-science/)).
 
 Research topics
 ======
