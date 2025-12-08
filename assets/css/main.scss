@@ -41,3 +41,32 @@
     "vendor/font-awesome/solid",
     "vendor/font-awesome/brands"
 ;
+
+.swiper-slide img {
+  height: 300px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.image-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.image-row img {
+  max-width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.small-image {
+  max-width: 200px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
