@@ -9,6 +9,7 @@ tags:
 ---
 
 I am writing on the train to Venice, to take a flight to my new home: Luxembourg.
+
 Just one month age I finished my PhD, and in less than 4 weeks I found a new job and an apartment.
 I left the old one in the city center of Cesena in few days.
 It was terrible staying there, especially during winter.
