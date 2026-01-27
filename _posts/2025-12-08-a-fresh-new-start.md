@@ -3,6 +3,8 @@ title: 'A fresh new start'
 date: 2025-12-08
 permalink: /posts/2025/12/a-fresh-new-start/
 tags:
+  - university
+  - luxembourg
   - life
   - work
 ---
