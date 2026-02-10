@@ -1,6 +1,6 @@
 ---
 title: 'Exploring the Surrounding'
-date: 2025-12-08
+date: 2025-12-22
 permalink: /posts/2025/12/exploring-the-surrounding/
 tags:
   - free time

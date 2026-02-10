@@ -1,6 +1,6 @@
 ---
 title: 'About sports'
-date: 2025-12-01
+date: 2026-01-27
 permalink: /posts/2026/01/about-sports/
 tags:
   - luxembourg
