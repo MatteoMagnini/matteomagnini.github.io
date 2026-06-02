@@ -39,6 +39,6 @@ jobs:
         git rebase origin/main || {
           git checkout --ours .
           git add .
-          git rebase --continue
+          git rebase --continue -m "Automated update of talk locations" || git rebase --abort
         }
         git push https://x-access-token:${{ secrets.DEPLOYMENT_TOKEN }}@github.com/MatteoMagnini/matteomagnini.github.io.git HEAD:main
