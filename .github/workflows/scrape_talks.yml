@@ -21,7 +21,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
+        python-version: '3.14'
 
     - name: Install dependencies
       run: |
@@ -42,7 +42,6 @@ jobs:
           exit 0
         fi
         git commit -m "Automated update of talk locations"
-        git fetch origin master
-        git push --force-with-lease \
+        git push --force \
           https://x-access-token:${{ secrets.DEPLOYMENT_TOKEN }}@github.com/MatteoMagnini/matteomagnini.github.io.git \
           HEAD:master
