@@ -36,5 +36,9 @@ jobs:
         git add .
         git commit -m "Automated update of talk locations" || echo "No changes to commit"
         git fetch origin main
-        git rebase origin/main || git merge origin/main
+        git rebase origin/main || {
+          git checkout --ours .
+          git add .
+          git rebase --continue
+        }
         git push https://x-access-token:${{ secrets.DEPLOYMENT_TOKEN }}@github.com/MatteoMagnini/matteomagnini.github.io.git HEAD:main
