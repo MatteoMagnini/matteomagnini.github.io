@@ -18,7 +18,7 @@ Too much to bear (and arguably at the border of legality).
 
 The new apartment is exactly the opposite of the old one.
 The new job is also very different to some extent.
-Actually, it is a postdoc position (a.k.a., research specialist until I defend my thesis) at the University of Luxembourg.
+Actually, it is a postdoc position at the University of Luxembourg.
 So, it is a natural continuation of my PhD studies.
 However, the environment, the services, the bureaucracy, and the country are all different (and hopefully much better).
 
