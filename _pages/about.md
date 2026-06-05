@@ -26,5 +26,6 @@ Research topics
 Useful links
 ======
 For the visitor who wants to quickly jump to the sources:
-- [CV](https://github.com/MatteoMagnini/cv/releases/latest/download/cv.pdf) (latest updated version)
-- [UniBo](https://www.unibo.it/sitoweb/matteo.magnini) (personal University of Bologna's webpage)
+- [CV](https://github.com/MatteoMagnini/cv/releases/latest/download/cv.pdf), latest updated version
+- [UniLu](https://www.uni.lu/fstm-en/people/matteo-magnini/), personal University of Luxembourg's webpage
+- [UniBo](https://www.unibo.it/sitoweb/matteo.magnini), personal University of Bologna's webpage (soon to be removed)
