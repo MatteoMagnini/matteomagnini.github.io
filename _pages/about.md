@@ -9,7 +9,7 @@ redirect_from:
 
 Hello there 👋
 
-I am Matteo Magnini, I have recently moved in the Grand Duchy and I have started my new position of Postdoctoral Researcher at the University of Luxembourg ([Department of Computer Science (DCS)](https://www.uni.lu/fstm-en/research-departments/department-of-computer-science/)).
+I am Matteo Magnini, I have recently moved in the Grand Duchy and I have started my new position of Postdoctoral Researcher at the [University of Luxembourg](https://www.uni.lu/en/), [Department of Computer Science (DCS)](https://www.uni.lu/fstm-en/research-departments/department-of-computer-science/).
 
 Research topics
 ======
