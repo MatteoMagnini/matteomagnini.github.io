@@ -1,0 +1,12 @@
+---
+title: "A view to a KILL:"
+collection: "publications"
+category: "conferences"
+
+permalink: "/publication/2022-01-01-a-view-to-a-kill"
+date: 2022-01-01
+venue: "Proceedings of the 23rd Workshop"
+paperurl: "https://ceur-ws.org/Vol-3261/paper5.pdf"
+bibtexurl: "https://github.com/MatteoMagnini/cv/blob/master/bibtex/2022_woa_kill.bib"
+authors: "Matteo Magnini and Giovanni Ciatto and Andrea Omicini"
+---
