@@ -1,7 +1,7 @@
 ---
 title: "Privacy-preserving LLM-based chatbots for hypertensive patient self-management"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2025-01-01-privacy-preserving-llm-based-chatbots-for-hypertensive-patient-self-management"
 date: 2025-01-01

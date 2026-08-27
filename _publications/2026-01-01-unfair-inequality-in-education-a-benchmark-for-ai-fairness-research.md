@@ -1,7 +1,7 @@
 ---
 title: "Unfair Inequality in Education: A Benchmark for AI-Fairness Research"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2026-01-01-unfair-inequality-in-education-a-benchmark-for-ai-fairness-research"
 date: 2026-01-01

@@ -26,79 +26,101 @@ def slugify(str)
   s
 end
 
-# Converti semplice BibTeX/TeX in Unicode (estendibile se servono altri accenti)
+# Estrai il contenuto di un campo BibTeX gestendo { } bilanciati
+def extract_braced_field(content, field_name)
+  re = /#{field_name}\s*=\s*\{/mi
+  m  = content.match(re)
+  return nil unless m
+
+  idx   = m.end(0)
+  depth = 1
+  result = +''
+  while idx < content.length && depth > 0
+    ch = content[idx]
+    if ch == '{'
+      depth += 1
+      result << ch
+    elsif ch == '}'
+      depth -= 1
+      break if depth.zero?
+      result << ch
+    else
+      result << ch
+    end
+    idx += 1
+  end
+
+  result.strip
+end
+
+def extract_field(content, field_name)
+  braced = extract_braced_field(content, field_name)
+  return braced if braced
+
+  if content =~ /#{field_name}\s*=\s*"(.*?)"/mi
+    return Regexp.last_match(1).strip
+  end
+
+  nil
+end
+
+# Convert BibTeX/TeX escapes to Unicode
 def bibtex_to_unicode(str)
   s = str.to_s.dup
 
-  # Prima rimuovi braces di puro "raggruppamento"
-  s.gsub!(/[{}]/, '')
-
   replacements = {
-    # dieresi
-    /\\"a/  => 'ä',
-    /\\"A/  => 'Ä',
-    /\\"o/  => 'ö',
-    /\\"O/  => 'Ö',
-    /\\"u/  => 'ü',
-    /\\"U/  => 'Ü',
-    /\\"e/  => 'ë',
-    /\\"E/  => 'Ë',
-    /\\"i/  => 'ï',
-    /\\"I/  => 'Ï',
+    # diaeresis
+    /\\"a/  => 'ä', /\\"A/  => 'Ä',
+    /\\"o/  => 'ö', /\\"O/  => 'Ö',
+    /\\"u/  => 'ü', /\\"U/  => 'Ü',
+    /\\"e/  => 'ë', /\\"E/  => 'Ë',
+    /\\"i/  => 'ï', /\\"I/  => 'Ï',
 
-    # accento acuto
-    /\\'a/  => 'á',
-    /\\'A/  => 'Á',
-    /\\'e/  => 'é',
-    /\\'E/  => 'É',
-    /\\'i/  => 'í',
-    /\\'I/  => 'Í',
-    /\\'o/  => 'ó',
-    /\\'O/  => 'Ó',
-    /\\'u/  => 'ú',
-    /\\'U/  => 'Ú',
-    /\\'c/  => 'ć',
-    /\\'C/  => 'Ć',
+    # acute
+    /\\'a/  => 'á', /\\'A/  => 'Á',
+    /\\'e/  => 'é', /\\'E/  => 'É',
+    /\\'i/  => 'í', /\\'I/  => 'Í',
+    /\\'o/  => 'ó', /\\'O/  => 'Ó',
+    /\\'u/  => 'ú', /\\'U/  => 'Ú',
+    /\\'c/  => 'ć', /\\'C/  => 'Ć',
 
-    # accento grave
-    /\\`a/  => 'à',
-    /\\`A/  => 'À',
-    /\\`e/  => 'è',
-    /\\`E/  => 'È',
-    /\\`i/  => 'ì',
-    /\\`I/  => 'Ì',
-    /\\`o/  => 'ò',
-    /\\`O/  => 'Ò',
-    /\\`u/  => 'ù',
-    /\\`U/  => 'Ù',
+    # grave
+    /\\`a/  => 'à', /\\`A/  => 'À',
+    /\\`e/  => 'è', /\\`E/  => 'È',
+    /\\`i/  => 'ì', /\\`I/  => 'Ì',
+    /\\`o/  => 'ò', /\\`O/  => 'Ò',
+    /\\`u/  => 'ù', /\\`U/  => 'Ù',
 
     # tilde
-    /\\~n/  => 'ñ',
-    /\\~N/  => 'Ñ',
+    /\\~n/  => 'ñ', /\\~N/  => 'Ñ',
 
-    # cediglia
-    /\\c c/ => 'ç',
-    /\\cC/  => 'Ç',
-    /\\c\{c\}/ => 'ç',
-    /\\c\{C\}/ => 'Ç',
+    # cedilla
+    /\\c c/     => 'ç',
+    /\\cC/      => 'Ç',
+    /\\c\{c\}/  => 'ç',
+    /\\c\{C\}/  => 'Ç',
 
     # sharp s
     /\\ss/  => 'ß'
   }
 
-  replacements.each do |pattern, repl|
-    s.gsub!(pattern, repl)
-  end
+  replacements.each { |pattern, repl| s.gsub!(pattern, repl) }
 
+  s
+end
+
+# Rimuovi graffe "inline" mantenendo il testo, es: "{KINS:}" -> "KINS:"
+def strip_inline_braces(str)
+  s = str.to_s.dup
+  # gestisce casi come "{KINS:}", "{KILL:}", anche se appaiono in mezzo al testo
+  s.gsub!(/\{([^{}]+)\}/, '\1')
   s
 end
 
 def yaml_double_quoted(str)
   s = str.to_s.dup
-  # Niente rimozione braces qui: li abbiamo già gestiti in bibtex_to_unicode
   s.gsub!('\\', '\\\\')
   s.gsub!('"', '\"')
-  # tutto su una riga
   s.gsub!(/\s+/, ' ')
   "\"#{s.strip}\""
 end
@@ -106,37 +128,32 @@ end
 def parse_bib_content(content)
   fields = {}
 
-  # tipo e chiave
-  if content =~ /^@\w+\s*{\s*([^,]+),/m
-    fields['bibkey'] = Regexp.last_match(1).strip
+  if content =~ /^@(\w+)\s*{\s*([^,]+),/m
+    fields['entrytype'] = Regexp.last_match(1).strip.downcase
+    fields['bibkey']    = Regexp.last_match(2).strip
   end
 
-  # campi semplici su una riga
-  simple_fields = {
-    'title'      => /title\s*=\s*[{"](.+?)[}"],?/mi,
-    'year'       => /year\s*=\s*[{"](.+?)[}"],?/mi,
-    'url'        => /url\s*=\s*[{"](.+?)[}"],?/mi,
-    'note'       => /note\s*=\s*[{"](.+?)[}"],?/mi,
-    'journal'    => /journal\s*=\s*[{"](.+?)[}"],?/mi,
-    'booktitle'  => /booktitle\s*=\s*[{"](.+?)[}"],?/mi,
-    'volume'     => /volume\s*=\s*[{"](.+?)[}"],?/mi
-  }
-
-  simple_fields.each do |key, regex|
-    if content =~ regex
-      fields[key] = Regexp.last_match(1).strip
-    end
+  %w[title year url note journal booktitle volume].each do |name|
+    val = extract_field(content, name)
+    fields[name] = val if val
   end
 
-  # author può essere multilinea. Prende tutto tra { e la } finale prima della virgola.
-  if content =~ /author\s*=\s*\{(.*?)\},/m
-    # questo prende il blocco interno, compresi eventuali \"
-    fields['author'] = Regexp.last_match(1).strip
-  elsif content =~ /author\s*=\s*"(.*?)",/m
-    fields['author'] = Regexp.last_match(1).strip
-  end
+  author_val = extract_field(content, 'author')
+  fields['author'] = author_val if author_val
 
   fields
+end
+
+def determine_category(entrytype, fields)
+  t = (entrytype || '').downcase
+
+  if t.include?('inbook') || t == 'book'
+    return 'books' if fields['booktitle'] || t == 'book'
+  end
+
+  return 'manuscripts' if t == 'article'
+
+  'conferences'
 end
 
 def list_bib_files
@@ -159,19 +176,27 @@ bib_files.each do |bib_name|
     next
   end
 
-  fields = parse_bib_content(content)
+  fields    = parse_bib_content(content)
+  entrytype = fields['entrytype']
+  category  = determine_category(entrytype, fields)
 
+  # Titolo
   title_raw = fields['title'] || File.basename(bib_name, '.bib')
   title     = bibtex_to_unicode(title_raw)
+  title     = strip_inline_braces(title)
 
+  # Anno / data
   year_raw  = fields['year'] || '1900'
   year      = year_raw.gsub(/[^\d]/, '')
   year      = '1900' if year.empty?
   date      = "#{year}-01-01"
 
+  # Venue
   venue_raw = fields['booktitle'] || fields['journal'] || fields['note'] || ''
   venue     = bibtex_to_unicode(venue_raw)
+  venue     = strip_inline_braces(venue)
 
+  # URL paper
   paperurl_raw = fields['url'] || ''
   paperurl     = bibtex_to_unicode(paperurl_raw)
 
@@ -181,14 +206,17 @@ bib_files.each do |bib_name|
   filename   = "#{date}-#{slug}.md"
   out_path   = File.join(OUTPUT_DIR, filename)
 
+  # Autori
   authors_raw = fields['author'] || ''
   authors     = bibtex_to_unicode(authors_raw)
+  authors     = strip_inline_braces(authors)
 
   yaml_title     = yaml_double_quoted(title)
   yaml_venue     = yaml_double_quoted(venue)
   yaml_paperurl  = yaml_double_quoted(paperurl)
   yaml_bibtexurl = yaml_double_quoted(bibtexurl)
   yaml_authors   = yaml_double_quoted(authors)
+  yaml_category  = yaml_double_quoted(category)
 
   permalink = "/publication/#{date}-#{slug}"
 
@@ -196,7 +224,7 @@ bib_files.each do |bib_name|
     ---
     title: #{yaml_title}
     collection: "publications"
-    category: "conferences"
+    category: #{yaml_category}
 
     permalink: "#{permalink}"
     date: #{date}
@@ -208,5 +236,5 @@ bib_files.each do |bib_name|
   YAML
 
   File.write(out_path, front_matter, mode: 'w', encoding: 'UTF-8')
-  puts "Created: #{out_path}"
+  puts "Created: #{out_path} (#{category})"
 end

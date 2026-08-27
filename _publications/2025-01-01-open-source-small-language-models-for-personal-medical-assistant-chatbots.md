@@ -1,7 +1,7 @@
 ---
 title: "Open-source small language models for personal medical assistant chatbots"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2025-01-01-open-source-small-language-models-for-personal-medical-assistant-chatbots"
 date: 2025-01-01

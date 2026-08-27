@@ -1,7 +1,7 @@
 ---
 title: "Knowledge injection of Datalog rules via Neural Network Structuring with KINS"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2023-01-01-knowledge-injection-of-datalog-rules-via-neural-network-structuring-with-kins"
 date: 2023-01-01

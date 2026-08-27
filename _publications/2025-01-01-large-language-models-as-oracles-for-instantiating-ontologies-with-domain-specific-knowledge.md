@@ -1,7 +1,7 @@
 ---
 title: "Large language models as oracles for instantiating ontologies with domain-specific knowledge"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2025-01-01-large-language-models-as-oracles-for-instantiating-ontologies-with-domain-specific-knowledge"
 date: 2025-01-01

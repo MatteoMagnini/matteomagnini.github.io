@@ -1,7 +1,7 @@
 ---
 title: "Intelligent Agents from Symbolic to Neurosymbolic Systems: The Quest for Integration"
 collection: "publications"
-category: "conferences"
+category: "books"
 
 permalink: "/publication/2026-01-01-intelligent-agents-from-symbolic-to-neurosymbolic-systems-the-quest-for-integration"
 date: 2026-01-01

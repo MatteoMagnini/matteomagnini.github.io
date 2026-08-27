@@ -1,7 +1,7 @@
 ---
 title: "Symbolic knowledge injection meets intelligent agents: QoS metrics and experiments"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2023-01-01-symbolic-knowledge-injection-meets-intelligent-agents-qos-metrics-and-experiments"
 date: 2023-01-01

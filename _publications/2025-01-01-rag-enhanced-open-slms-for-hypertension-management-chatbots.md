@@ -1,7 +1,7 @@
 ---
 title: "RAG-Enhanced Open SLMs for Hypertension Management Chatbots"
 collection: "publications"
-category: "conferences"
+category: "manuscripts"
 
 permalink: "/publication/2025-01-01-rag-enhanced-open-slms-for-hypertension-management-chatbots"
 date: 2025-01-01
