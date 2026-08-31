@@ -51,4 +51,13 @@ html[data-theme="dark"] {
     --global-text-color                 : #{$text};
     --global-text-color-light           : #f3f3f3;
     --global-thead-color                : #{$background-lighter};
+    --card-bg                           : #{$darker-gray};
+    --card-border                       : rgba(255, 255, 255, 0.12);
+    --card-shadow                       : 0 2px 4px rgba(0, 0, 0, 0.7);
+    --card-shadow-hover                 : 0 8px 18px rgba(0, 0, 0, 0.9);
+    --card-text-main                    : rgba(255, 255, 255, 0.88);
+    --card-text-muted                   : rgba(255, 255, 255, 0.78);
+    --card-text-faint                   : rgba(255, 255, 255, 0.60);
+    --card-pill-bg                      : rgba(255, 255, 255, 0.06);
+    --card-separator                    : rgba(255, 255, 255, 0.18);
 }

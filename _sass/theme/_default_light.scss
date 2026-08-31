@@ -44,4 +44,13 @@ $sidebar-screen-min-width   : 1024px;
     --global-text-color                 : #{$dark-gray};
     --global-text-color-light           : #{$light-gray};
     --global-thead-color                : #{$lighter-gray};
+    --card-bg                           : #ffffff;
+    --card-border                       : rgba(0, 0, 0, 0.08);
+    --card-shadow                       : 0 2px 4px rgba(0, 0, 0, 0.03);
+    --card-shadow-hover                 : 0 6px 14px rgba(0, 0, 0, 0.10);
+    --card-text-main                    : rgba(0, 0, 0, 0.80);
+    --card-text-muted                   : rgba(0, 0, 0, 0.72);
+    --card-text-faint                   : rgba(0, 0, 0, 0.6);
+    --card-pill-bg                      : rgba(0, 0, 0, 0.06);
+    --card-separator                    : rgba(0, 0, 0, 0.10);
 }

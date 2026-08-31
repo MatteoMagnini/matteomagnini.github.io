@@ -1,0 +1,109 @@
+.teaching-year-separator {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--card-separator);
+  padding-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.teaching-year-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  justify-content: flex-start;
+}
+
+/* Card */
+
+.teaching-card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  padding: 0.9rem 1rem;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  box-sizing: border-box;
+}
+
+.teaching-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--card-border);
+}
+
+.teaching-card-header {
+  margin-bottom: 0.4rem;
+}
+
+.teaching-card-header-main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.teaching-card-title {
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+.teaching-card-title a {
+  text-decoration: none;
+}
+
+.teaching-card-title a:hover {
+  text-decoration: underline;
+}
+
+.teaching-card-semester-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--card-pill-bg);
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.teaching-card-semester-emoji {
+  margin-right: 0.25rem;
+}
+
+.teaching-card-role {
+  font-size: 0.85rem;
+  color: var(--card-text-muted);
+  margin: 0.35rem 0 0.15rem;
+}
+
+
+.teaching-card-row {
+  font-size: 0.8rem;
+  color: var(--card-text-muted);
+  margin: 0.05rem 0;
+}
+
+.teaching-card-row span + span {
+  margin-left: 0.25rem;
+}
+
+.teaching-card-row-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.6rem;
+}
+
+
+.teaching-card-body {
+  margin-top: 0.5rem;
+}
+
+.teaching-card-description {
+  font-size: 0.82rem;
+  color: var(--card-text-main);
+  margin: 0;
+}

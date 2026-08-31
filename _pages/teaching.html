@@ -7,6 +7,25 @@ author_profile: true
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
+{% assign teaching_sorted = site.teaching | sort: "date" | reverse %}
+{% assign current_year = "" %}
+
+{% for post in teaching_sorted %}
+  {% assign year = post.date | date: "%Y" %}
+
+  {% if year != current_year %}
+    {% unless forloop.first %}
+      </div>
+    {% endunless %}
+
+    <h2 class="teaching-year-separator">{{ year }}</h2>
+    <div class="teaching-year-grid">
+    {% assign current_year = year %}
+  {% endif %}
+
+  {% include teaching-card.html post=post %}
+
+  {% if forloop.last %}
+    </div>
+  {% endif %}
 {% endfor %}

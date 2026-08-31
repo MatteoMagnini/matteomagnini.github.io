@@ -1,0 +1,119 @@
+{% include base_path %}
+
+{% assign title = post.title %}
+{% assign role = post.role | default: "Teaching" %}
+{% assign venue = post.venue %}
+{% assign location = post.location %}
+{% assign degree = post.degree %}
+{% assign type = post.type %}
+{% assign semester = post.semester %}
+{% assign year = post.date | date: "%Y" %}
+{% assign language = post.language %}
+{% assign hours = post.hours %}
+{% assign students_min = post.students_min %}
+{% assign students_max = post.students_max %}
+
+{%- assign semester_emoji = "☀️" -%}
+{% if semester %}
+  {% case semester %}
+    {% when "Spring" %}
+      {% assign semester_emoji = "☀️" %}
+    {% when "Summer" %}
+      {% assign semester_emoji = "☀️" %}
+    {% when "Fall" %}
+      {% assign semester_emoji = "🍂" %}
+    {% when "Winter" %}
+      {% assign semester_emoji = "❄️" %}
+    {% else %}
+      {% assign semester_emoji = "📘" %}
+  {% endcase %}
+{% endif %}
+
+{%- assign language_emoji = "📚" -%}
+{% if language %}
+  {% case language %}
+    {% when "en" %}
+      {% assign language_emoji = "🇬🇧" %}
+    {% when "it" %}
+      {% assign language_emoji = "🇮🇹" %}
+    {% when "fr" %}
+      {% assign language_emoji = "🇫🇷" %}
+    {% when "de" %}
+      {% assign language_emoji = "🇩🇪" %}
+    {% when "lu" %}
+      {% assign language_emoji = "🇱🇺" %}
+    {% else %}
+      {% assign language_emoji = "📚" %}
+  {% endcase %}
+{% endif %}
+
+<div class="teaching-card">
+  <div class="teaching-card-header">
+    <div class="teaching-card-header-main">
+      <h3 class="teaching-card-title">
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+      </h3>
+      <div class="teaching-card-semester-pill">
+        <span class="teaching-card-semester-emoji">{{ semester_emoji }}</span>
+        <span class="teaching-card-semester-text">
+          {% if semester %}{{ semester }}{% endif %}
+        </span>
+      </div>
+    </div>
+
+    <p class="teaching-card-role">
+      {{ role }}
+    </p>
+
+    <p class="teaching-card-row teaching-card-row-compact">
+      {% if hours %}
+        <span>⏱ {{ hours }}h</span>
+      {% endif %}
+      {% if students_min or students_max %}
+        <span>
+          👥
+          {% if students_min and students_max %}
+            {{ students_min }}–{{ students_max }}
+          {% elsif students_min %}
+            ≥ {{ students_min }}
+          {% elsif students_max %}
+            ≤ {{ students_max }}
+          {% endif %}
+        </span>
+      {% endif %}
+      {% if language %}
+        <span>{{ language_emoji }} {{ language | upcase }}</span>
+      {% endif %}
+    </p>
+
+    <p class="teaching-card-row">
+      {% if degree %}
+        <span>{{ degree }}</span>
+      {% endif %}
+      {% if type %}
+        <span>· {{ type }}</span>
+      {% endif %}
+    </p>
+
+    <p class="teaching-card-row">
+      {% if venue %}
+        <span>{{ venue }}</span>
+      {% endif %}
+      {% if location %}
+        <span>· {{ location }}</span>
+      {% endif %}
+    </p>
+  </div>
+
+  <div class="teaching-card-body">
+    {% if post.excerpt %}
+      <p class="teaching-card-description">
+        {{ post.excerpt | strip_html | strip_newlines }}
+      </p>
+    {% else %}
+      <p class="teaching-card-description">
+        {{ post.content | markdownify | strip_html | truncate: 180 }}
+      </p>
+    {% endif %}
+  </div>
+</div>
