@@ -1,0 +1,102 @@
+---
+layout: archive
+title: "Students"
+permalink: /students/
+author_profile: true
+---
+
+{% include base_path %}
+
+<div class="students-intro">
+  <h2>Projects and Theses</h2>
+
+  <p>
+    Students interested in doing a Bachelor Semester Project (BSP),
+    or a Master's thesis under my supervision
+    are required to read the relevant documents on this page.
+  </p>
+
+  <p>
+    <strong>
+      Please read these documents before contacting me, or immediately
+      after contacting me if you have already done so.
+    </strong>
+    They describe the expectations, requirements, and guidelines
+    for projects and theses.
+  </p>
+</div>
+
+
+<div class="students-rules">
+  <h2>Before contacting me</h2>
+
+  <p>
+    When contacting me about a BSP or thesis, please make sure that
+    you can provide the following information and that you are aware
+    of the following requirements:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Have an idea in mind.</strong>
+      When contacting me for a BSP or thesis, you should already have
+      a concrete idea of what you would like to work on. If you do not
+      have a specific project idea yet, you should at least have a clear
+      understanding of the research areas or topics you are interested in.
+    </li>
+
+    <li>
+      <strong>State your academic progress.</strong>
+      Please include your current average grade and specify which
+      semester you are currently in.
+    </li>
+
+    <li>
+      <strong>For theses:</strong>
+      please also indicate how many exams you still have to complete.
+    </li>
+
+    <li>
+      <strong>Keep track of administrative deadlines.</strong>
+      You are responsible for being aware of and respecting all relevant
+      university deadlines and administrative requirements.
+      I cannot keep track of these deadlines on your behalf.
+    </li>
+
+    <li>
+      <strong>Appointments.</strong>
+      If you cannot attend a scheduled meeting for any reason, please
+      notify me as soon as possible, preferably at least one day in advance.
+    </li>
+
+    <li>
+      <strong>No remote supervision.</strong>
+      I do not supervise BSPs or theses remotely. Supervision requires
+      students to be able to meet in person.
+    </li>
+
+    <li>
+      <strong>Use of AI.</strong>
+      I cannot prevent you to use GenAI tools, so at least use them properly and add an AI disclosure.
+      I strongly suggest the reading "Thinking--Fast, Slow, and Artificial" before any use of LLMs.
+    </li>
+  </ul>
+</div>
+
+<div class="students-documents">
+
+  <h2>Documents</h2>
+
+  <p>Read these documents as soon as you can. I expect you to be familiar with them.</p>
+
+  <div class="students-document-grid">
+
+    {% assign students_sorted = site.students | sort: "order" %}
+
+    {% for post in students_sorted %}
+      {% include resource-card.html post=post %}
+    {% endfor %}
+
+  </div>
+
+</div>
