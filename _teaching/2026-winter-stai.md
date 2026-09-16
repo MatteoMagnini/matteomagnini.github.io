@@ -1,5 +1,5 @@
 ---
-title: "Intelligent Systems 2"
+title: "Selected Topics in Artificial Intelligence"
 role: "Course responsibility"
 collection: teaching
 degree: "Master in Information and Computer Science"
